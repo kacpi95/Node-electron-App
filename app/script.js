@@ -45,6 +45,13 @@ const App = () => {
     }, 1000);
     setTimer(interval);
   }
+  function handleStop() {
+    if (timer) {
+      clearInterval(timer);
+      setTime(null);
+      setStatus('off');
+    }
+  }
 
   return (
     <div>
@@ -68,6 +75,11 @@ const App = () => {
       {status === 'off' && (
         <button className='btn' onClick={handleStart}>
           Start
+        </button>
+      )}
+      {status !== 'off' && (
+        <button className='btn' onClick={handleStop}>
+          Stop
         </button>
       )}
 
