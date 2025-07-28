@@ -52,6 +52,9 @@ const App = () => {
       setStatus('off');
     }
   }
+  function closeApp() {
+    window.close();
+  }
 
   return (
     <div>
@@ -82,7 +85,9 @@ const App = () => {
           Stop
         </button>
       )}
-
+      <button className='btn btn-close' onClick={closeApp}>
+        X
+      </button>
       <button className='btn btn-close'>X</button>
     </div>
   );
