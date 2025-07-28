@@ -10,13 +10,13 @@ function main() {
       nodeIntegration: true,
       contextIsolation: false,
     },
-    width: 300,
-    height: 300,
+    width: 520,
+    height: 650,
+    frame: false,
   });
 
   // load app/index.html as the window content
   mainWindow.loadFile(path.join('app', 'index.html'));
-  mainWindow.webContents.openDevTools();
 }
 
 app.on('ready', main);

@@ -37,13 +37,13 @@ const App = () => {
               }
               return prev - 1;
             });
-          }, 1);
+          }, 1000);
           setTimer(restInterval);
           return 0;
         }
         return prev - 1;
       });
-    }, 1);
+    }, 1000);
     setTimer(interval);
   }
   function handleStop() {
@@ -93,7 +93,6 @@ const App = () => {
       <button className='btn btn-close' onClick={closeApp}>
         X
       </button>
-      <button className='btn btn-close'>X</button>
     </div>
   );
 };
