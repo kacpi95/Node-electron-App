@@ -16,6 +16,36 @@ const App = () => {
     return `${formatMin} : ${formatSec}`;
   }
 
+  function handleStart() {
+    setTime(1200);
+    setStatus('work');
+
+    const interval = setInterval(() => {
+      setTime((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          setStatus('rest');
+          setTime(20);
+
+          const restInterval = setInterval(() => {
+            setTime((prev) => {
+              if (prev <= 1) {
+                clearInterval(restInterval);
+                setStatus('off');
+                return 0;
+              }
+              return prev - 1;
+            });
+          }, 1000);
+          setTimer(restInterval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    setTimer(interval);
+  }
+
   return (
     <div>
       <h1>Protect your eyes</h1>
@@ -35,6 +65,12 @@ const App = () => {
       {status === 'work' && <img src='./images/work.png' />}
       {status === 'rest' && <img src='./images/rest.png' />}
       {status !== 'off' && <div className='timer'>{formatTime()}</div>}
+      {status === 'off' && (
+        <button className='btn' onClick={handleStart}>
+          Start
+        </button>
+      )}
+
       <button className='btn btn-close'>X</button>
     </div>
   );
