@@ -26,6 +26,7 @@ const App = () => {
           clearInterval(interval);
           setStatus('rest');
           setTime(20);
+          playBell();
 
           const restInterval = setInterval(() => {
             setTime((prev) => {
@@ -36,13 +37,13 @@ const App = () => {
               }
               return prev - 1;
             });
-          }, 1000);
+          }, 1);
           setTimer(restInterval);
           return 0;
         }
         return prev - 1;
       });
-    }, 1000);
+    }, 1);
     setTimer(interval);
   }
   function handleStop() {
@@ -54,6 +55,10 @@ const App = () => {
   }
   function closeApp() {
     window.close();
+  }
+  function playBell() {
+    const audio = new Audio('./sounds/bell.wav');
+    return audio.play();
   }
 
   return (
